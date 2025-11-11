@@ -1,0 +1,73 @@
+.blue_block{
+    background-color: #006B99;
+    display: flex;
+    width: 1220px;
+    height: 550px;
+    position: relative;
+    right: 10px;
+} 
+.image_blueblock{
+    margin: 80px 0 0 155px;
+}
+.info_block{
+    margin-left: 175px;
+    margin-top: 80px;
+}
+.title_blue{
+   font-size: 42px;
+   line-height: 50px;
+   letter-spacing: 0.2px;
+   font-family: "Fraunces", serif;
+   color: white;
+}
+.description_blue{
+   font-size: 18px;
+   line-height: 27px;
+   letter-spacing: 0.2px;
+   font-family: "Inter", sans-serif; 
+   color: white;
+   position: relative;
+   bottom: 21px;
+   font-weight: 250;
+}
+ul{
+    position: relative;
+    left: -37px;
+    bottom: 20px;
+}
+.blueli{
+    list-style-type: none;
+    font-size: 16px;
+    line-height: 21.6px;
+    letter-spacing: 0.2px;
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 300; 
+    background-image: url(/fronted/second_homework/images/IMAGEblue_strelka.png); 
+    background-repeat: no-repeat;
+    padding-left: 30px;
+    color: white;  
+} 
+
+.button_blue{
+width: 176px;
+height: 43px;
+background-color: #006B99;
+border: 0.5px solid white;
+color: white;
+font-size: 17px;
+line-height: 27px;
+letter-spacing: 0.2px;
+font-family: "Inter", sans-serif;
+font-optical-sizing: auto;
+font-weight: 300; 
+cursor: pointer;
+transition: 0.5s;
+}
+.button_blue:hover{
+    color: black;
+    transform: scale(1.1);
+}
+
+
+ 
