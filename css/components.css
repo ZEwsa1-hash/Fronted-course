@@ -1,0 +1,66 @@
+.card-art{
+  background-color: var(--baground-four-color);
+  margin-left: 30px;
+  max-width: 350px;
+  margin-top: 30px;
+  font-family: "Raleway-Medium";
+  padding: 20px 20px 30px;
+  
+  &:hover {
+    transition: all 0.5s ease;
+    box-shadow: 0px 0px 5px 5px rgba(17, 46, 23, 0.5);
+  }
+}
+.card-art:first-child{
+  margin-left: 0px;
+}
+.card-art__image-title{
+  color: var(--text-two-color);
+  font-size: 18px;
+  margin-top: 20px;
+}
+.card-art__title{
+  margin-top: 10px;
+  font-size: 30px;
+}
+.card-art__description{
+  margin-top: 8px;
+  font-size: 18px;
+}
+.card-art__price{
+  margin-top: 30px;
+  margin-bottom: 0px;
+  color: var(--text-three-color);
+  font-size: 24px;
+}
+.card-art__btn{
+  width: 100%;
+  display: block;
+  height: 65px;
+  margin-top: 30px;
+  background-color: transparent;
+  color: var(--text-two-color);
+  border: 1px solid var(--baground-two-color);
+  font-size: 20px;
+  cursor: pointer;
+  font-family: "Raleway-Medium";
+
+  &:hover {
+    background-color: var(--baground-two-color);
+    color: var(--text-six-color);
+    border: 1px solid transparent;
+    transform: scale(1.05);
+  }
+
+  &:focus {
+    background-color: var(--baground-three-color);
+    color: var(--text-three-color);
+    border: 1px solid var(--baground-two-color);
+  }
+  
+  &:active{
+    background-color: var(--baground-one-color);
+    color: var(--text-five-color);
+    border: 1px solid transparent;
+  }
+}

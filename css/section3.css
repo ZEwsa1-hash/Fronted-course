@@ -1,0 +1,105 @@
+.section3{
+    background-image: url(/fronted/third_homework/img/pic_background.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    max-width: 1440px;
+    height: 574px;
+    margin: 70px auto 0 auto;
+
+    & .section3__title{
+        display: flex;
+        padding: 70px 0 0 165px;
+        
+        color: var(--text-six-color);
+        & .section3__heading{
+            margin-left: 20px;
+            line-height: 100%;
+            font-size: 40px;
+        }
+        & .section3__icon{
+            object-fit: cover;
+        }
+    }
+
+    & .section3__text--first{
+        padding-left:165px;
+        font-size: 18px;
+        line-height: 150%;
+        color: var(--text-five-color);
+        margin-top: 40px;
+    }
+    & .section3__text--second{
+        padding: 20px 0 0 165px;
+        font-size: 18px;
+        line-height: 150%;
+        color: var(--text-five-color);
+        
+    }
+    & .section3__button{
+        margin: 60px 0 0 165px;
+        width: 257px;
+        height: 65px;
+        color: var(--text-one-color);
+        background-color: var(--baground-six-color); 
+        border: none;
+        font-size: 20px;
+        cursor: pointer;
+        line-height: auto;
+        transition: 0.5s easy;
+        border: none;
+    }
+    & .section3__button:hover{
+        background-color: var(--baground-seven-color);
+    }
+        & .section3__button:focus{
+        background-color: var(--baground-seven-color);
+        border-color: var(--baground-eight-color);
+    }    & .section3__button:active{
+        background-color: var(--baground-nine-color);
+        border: 1px solid #000000;
+        color: var(--text-one-color);
+    }
+}
+
+@media (max-width: 768px) {
+    .section3 {
+        padding-left: 39px;
+    }
+
+    .section3 .section3__title {
+        padding-left: 0;
+    }
+
+    .section3 .section3__text--first,
+    .section3 .section3__text--second {
+        padding-left: 0;
+    }
+
+    .section3 .section3__button {
+        margin-left: 0;
+    }
+    .section3 button{
+        margin-top: 30px !important;
+    }
+}
+@media(max-width:660px){
+    .section3{
+    padding-left: 33px;
+    height: auto;
+    padding-bottom: 30px;
+    }
+    .section3__icon{
+        width: 50px;
+        height: 50px;
+    }
+    .section3 h2{
+        font-size: 24px;
+    }
+    .section3__text{
+        font-size: 16px;
+    }
+    .section3 button{
+        margin-top: 20px;
+    }
+}

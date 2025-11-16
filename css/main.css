@@ -1,0 +1,17 @@
+@font-face {  font-family: "Raleway";
+  src: url("../fonts/Raleway.ttf") format("truetype");
+  font-style: normal;
+  font-weight: normal;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Raleway;
+}
+
+.flex_center {
+  display: flex;
+  align-items: center;
+}
