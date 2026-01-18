@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Productivity Pro - Личная продуктивность</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="src/css/styles.css">
+</head>
+<body>
+    <!-- Кнопка переключения меню -->
+    <button class="sidebar-toggle" id="sidebar-toggle" title="Скрыть/показать меню">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <!-- Навигационное меню (Sidebar) -->
+    <nav class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <div class="logo">
+                <h1>Productivity Pro</h1>
+            </div>
+            <div class="user-section">
+                <button class="btn-icon" id="login-btn" title="Войти">
+                    <i class="fas fa-user-circle"></i>
+                </button>
+                <div class="user-info" id="user-info" style="display: none;"></div>
+                <button class="btn-icon" id="logout-btn" style="display: none;" title="Выйти">
+                    <i class="fas fa-sign-out-alt"></i>
+                </button>
+            </div>
+        </div>
+        <ul class="nav-menu">
+            <li><a href="#" data-page="dashboard" class="nav-link active">
+                <i class="fas fa-home"></i> <span>Главная</span>
+            </a></li>
+            <li><a href="#" data-page="tasks" class="nav-link">
+                <i class="fas fa-tasks"></i> <span>Задачи</span>
+            </a></li>
+            <li><a href="#" data-page="projects" class="nav-link">
+                <i class="fas fa-folder"></i> <span>Проекты</span>
+            </a></li>
+            <li><a href="#" data-page="calendar" class="nav-link">
+                <i class="fas fa-calendar-alt"></i> <span>Календарь</span>
+            </a></li>
+            <li><a href="#" data-page="goals" class="nav-link">
+                <i class="fas fa-bullseye"></i> <span>Цели</span>
+            </a></li>
+            <li><a href="#" data-page="notes" class="nav-link">
+                <i class="fas fa-sticky-note"></i> <span>Заметки</span>
+            </a></li>
+            <li><a href="#" data-page="archive" class="nav-link">
+                <i class="fas fa-archive"></i> <span>Архив</span>
+            </a></li>
+            <li><a href="#" data-page="analytics" class="nav-link">
+                <i class="fas fa-chart-bar"></i> <span>Аналитика</span>
+            </a></li>
+            <li><a href="#" data-page="settings" class="nav-link">
+                <i class="fas fa-cog"></i> <span>Настройки</span>
+            </a></li>
+        </ul>
+    </nav>
+
+    <!-- Основной контент -->
+    <main class="main-content">
+        <!-- Страница: Главная (Dashboard) -->
+        <section id="dashboard" class="page active">
+            <div class="page-header">
+                <div>
+                    <h2>Главная</h2>
+                    <p class="subtitle">Обзор вашей продуктивности</p>
+                </div>
+            </div>
+            <div class="dashboard-quick-access">
+                <h3>Быстрый доступ</h3>
+                <div class="quick-access-grid">
+                    <a href="#" data-page="tasks" class="quick-access-card">
+                        <div class="quick-icon"><i class="fas fa-tasks"></i></div>
+                        <h4>Задачи</h4>
+                        <p class="quick-count" id="quick-tasks-count">0</p>
+                    </a>
+                    <a href="#" data-page="projects" class="quick-access-card">
+                        <div class="quick-icon"><i class="fas fa-folder"></i></div>
+                        <h4>Проекты</h4>
+                        <p class="quick-count" id="quick-projects-count">0</p>
+                    </a>
+                    <a href="#" data-page="calendar" class="quick-access-card">
+                        <div class="quick-icon"><i class="fas fa-calendar-alt"></i></div>
+                        <h4>Календарь</h4>
+                    </a>
+                    <a href="#" data-page="goals" class="quick-access-card">
+                        <div class="quick-icon"><i class="fas fa-bullseye"></i></div>
+                        <h4>Цели</h4>
+                        <p class="quick-count" id="quick-goals-count">0</p>
+                    </a>
+                    <a href="#" data-page="notes" class="quick-access-card">
+                        <div class="quick-icon"><i class="fas fa-sticky-note"></i></div>
+                        <h4>Заметки</h4>
+                        <p class="quick-count" id="quick-notes-count">0</p>
+                    </a>
+                    <a href="#" data-page="archive" class="quick-access-card">
+                        <div class="quick-icon"><i class="fas fa-archive"></i></div>
+                        <h4>Архив</h4>
+                        <p class="quick-count" id="quick-archive-count">0</p>
+                    </a>
+                </div>
+            </div>
+            <div class="dashboard-grid">
+                <div class="stat-card">
+                    <div class="stat-icon"><i class="fas fa-tasks"></i></div>
+                    <h3>Активные задачи</h3>
+                    <p class="stat-number" id="active-tasks-count">0</p>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon"><i class="fas fa-check-circle"></i></div>
+                    <h3>Выполнено сегодня</h3>
+                    <p class="stat-number" id="completed-today-count">0</p>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon"><i class="fas fa-bullseye"></i></div>
+                    <h3>Активные цели</h3>
+                    <p class="stat-number" id="active-goals-count">0</p>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon"><i class="fas fa-sticky-note"></i></div>
+                    <h3>Заметок</h3>
+                    <p class="stat-number" id="notes-count">0</p>
+                </div>
+            </div>
+            <div class="recent-section">
+                <h3>Последние задачи</h3>
+                <div id="recent-tasks" class="task-list"></div>
+            </div>
+        </section>
+
+        <!-- Страница: Задачи (Obsidian стиль) -->
+        <section id="tasks" class="page">
+            <div class="tasks-layout">
+                <!-- Кнопка открытия боковой панели -->
+                <button class="sidebar-panel-toggle" id="tasks-sidebar-toggle" title="Открыть списки">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+                <!-- Боковая панель с папками (скрыта по умолчанию) -->
+                <div class="tasks-sidebar collapsed" id="tasks-sidebar">
+                    <div class="tasks-sidebar-header">
+                        <h3>Списки</h3>
+                        <button class="btn-icon" id="add-task-list-btn" title="Создать список">
+                            <i class="fas fa-plus"></i>
+                        </button>
+                        <button class="btn-icon" id="close-tasks-sidebar" title="Закрыть">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                    <!-- Фильтры Obsidian стиль -->
+                    <div class="tasks-filters">
+                        <input type="text" id="tasks-search" placeholder="Поиск задач..." class="filter-input">
+                        <div class="filter-row">
+                            <select id="tasks-date-filter" class="filter-select">
+                                <option value="all">Все даты</option>
+                                <option value="today">Сегодня</option>
+                                <option value="week">Эта неделя</option>
+                                <option value="month">Этот месяц</option>
+                                <option value="overdue">Просроченные</option>
+                                <option value="no-date">Без даты</option>
+                            </select>
+                        </div>
+                        <div class="filter-row">
+                            <select id="tasks-status-filter" class="filter-select">
+                                <option value="all">Все статусы</option>
+                                <option value="pending">В процессе</option>
+                                <option value="half">На половине</option>
+                                <option value="completed">Выполнено</option>
+                            </select>
+                        </div>
+                        <div class="filter-tags" id="filter-tags"></div>
+                    </div>
+                    <div id="task-lists" class="task-lists">
+                        <div class="task-list-item active" data-list="all">
+                            <i class="fas fa-list"></i>
+                            <span>Все задачи</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Основной контент -->
+                <div class="tasks-main">
+                    <div class="page-header">
+                        <div>
+                            <h2 id="current-list-name">Все задачи</h2>
+                        </div>
+                        <button class="btn btn-primary" id="add-task-btn">
+                            <i class="fas fa-plus"></i> Добавить задачу
+                        </button>
+                    </div>
+                    <!-- Диаграмма прогресса -->
+                    <div class="tasks-progress-section">
+                        <div class="progress-chart">
+                            <div class="progress-ring">
+                                <svg viewBox="0 0 100 100">
+                                    <circle class="progress-ring-bg" cx="50" cy="50" r="45"/>
+                                    <circle class="progress-ring-fill" id="progress-ring-fill" cx="50" cy="50" r="45"/>
+                                </svg>
+                                <div class="progress-text">
+                                    <span id="progress-percent">0%</span>
+                                </div>
+                            </div>
+                            <div class="progress-stats">
+                                <div class="progress-stat">
+                                    <span class="stat-label">В процессе</span>
+                                    <span class="stat-value" id="tasks-in-progress">0</span>
+                                </div>
+                                <div class="progress-stat">
+                                    <span class="stat-label">На половине</span>
+                                    <span class="stat-value" id="tasks-half-done">0</span>
+                                </div>
+                                <div class="progress-stat">
+                                    <span class="stat-label">Выполнено</span>
+                                    <span class="stat-value" id="tasks-completed">0</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="tasks-list" class="google-tasks-list"></div>
+                </div>
+                <!-- Панель деталей задачи -->
+                <div class="task-detail-panel" id="task-detail-panel">
+                    <div class="task-detail-header">
+                        <button class="btn-icon" onclick="Tasks.closeDetailPanel()">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                    <div class="task-detail-content" id="task-detail-content"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Страница: Проекты (колонки как Google Tasks) -->
+        <section id="projects" class="page">
+            <div class="page-header">
+                <div>
+                    <h2>Проекты</h2>
+                    <p class="subtitle">Управление проектами</p>
+                </div>
+                <button class="btn btn-primary" id="add-project-btn">
+                    <i class="fas fa-plus"></i> Добавить проект
+                </button>
+            </div>
+            <div id="projects-columns" class="projects-columns"></div>
+        </section>
+
+        <!-- Страница: Детали проекта -->
+        <section id="project-detail" class="page">
+            <div class="page-header">
+                <div>
+                    <button class="btn btn-secondary" onclick="Projects.backToList()">
+                        <i class="fas fa-arrow-left"></i> Назад
+                    </button>
+                    <h2 id="project-detail-title">Проект</h2>
+                </div>
+                <button class="btn btn-primary" onclick="Projects.addTaskToProject()">
+                    <i class="fas fa-plus"></i> Добавить задачу
+                </button>
+            </div>
+            <div id="project-detail-content" class="project-detail-content"></div>
+        </section>
+
+        <!-- Страница: Календарь -->
+        <section id="calendar" class="page">
+            <div class="page-header">
+                <div>
+                    <h2>Календарь</h2>
+                    <p class="subtitle">Планирование задач</p>
+                </div>
+                <div class="calendar-controls">
+                    <button class="btn btn-secondary" id="today-btn">Сегодня</button>
+                    <button class="btn-icon" id="prev-month">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button class="btn-icon" id="next-month">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                    <span id="current-month-year"></span>
+                </div>
+            </div>
+            <div id="calendar-container" class="calendar-container"></div>
+            <!-- Модальное окно добавления события в календарь -->
+            <div id="calendar-event-modal" class="modal">
+                <div class="modal-content calendar-event-form">
+                    <span class="close" onclick="Calendar.closeEventModal()">&times;</span>
+                    <form id="calendar-event-form">
+                        <input type="text" id="event-title-input" placeholder="Добавить название" class="event-title-input" required>
+                        <div class="event-form-row">
+                            <i class="fas fa-clock"></i>
+                            <input type="date" id="event-date-input">
+                            <input type="time" id="event-time-start">
+                            <span>-</span>
+                            <input type="time" id="event-time-end">
+                        </div>
+                        <div class="event-form-row">
+                            <i class="fas fa-align-left"></i>
+                            <textarea id="event-description-input" placeholder="Добавить описание"></textarea>
+                        </div>
+                        <div class="modal-buttons">
+                            <button type="submit" class="btn btn-primary">Сохранить</button>
+                            <button type="button" class="btn btn-secondary" onclick="Calendar.closeEventModal()">Отмена</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- Страница: Цели -->
+        <section id="goals" class="page">
+            <div class="page-header">
+                <div>
+                    <h2>Цели</h2>
+                    <p class="subtitle">Долгосрочные цели</p>
+                </div>
+                <button class="btn btn-primary" id="add-goal-btn">
+                    <i class="fas fa-plus"></i> Добавить цель
+                </button>
+            </div>
+            <div class="goals-header-actions">
+                <div class="goals-filters">
+                    <button class="goal-filter-btn active" data-filter="all">Все</button>
+                    <button class="goal-filter-btn" data-filter="short">
+                        Краткосрочные
+                        <span class="add-category-btn" onclick="event.stopPropagation(); Goals.addCategory('short')">+</span>
+                    </button>
+                    <button class="goal-filter-btn" data-filter="medium">
+                        Среднесрочные
+                        <span class="add-category-btn" onclick="event.stopPropagation(); Goals.addCategory('medium')">+</span>
+                    </button>
+                    <button class="goal-filter-btn" data-filter="long">
+                        Долгосрочные
+                        <span class="add-category-btn" onclick="event.stopPropagation(); Goals.addCategory('long')">+</span>
+                    </button>
+                </div>
+            </div>
+            <div id="goals-list" class="goals-list"></div>
+        </section>
+
+        <!-- Страница: Заметки (скрываемая боковая панель) -->
+        <section id="notes" class="page">
+            <div class="notes-layout">
+                <!-- Кнопка открытия боковой панели -->
+                <button class="sidebar-panel-toggle" id="notes-sidebar-toggle" title="Открыть список">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+                <!-- Боковая панель со списком заметок (скрыта по умолчанию) -->
+                <div class="notes-sidebar collapsed" id="notes-sidebar">
+                    <div class="notes-sidebar-header">
+                        <h3>Заметки</h3>
+                        <button class="btn-icon" id="add-note-btn" title="Создать заметку">
+                            <i class="fas fa-plus"></i>
+                        </button>
+                        <button class="btn-icon" id="close-notes-sidebar" title="Закрыть">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                    <!-- Поиск заметок -->
+                    <div class="notes-search">
+                        <input type="text" id="notes-search-input" placeholder="Поиск заметок..." class="filter-input">
+                    </div>
+                    <div id="notes-sidebar-list" class="notes-sidebar-list"></div>
+                </div>
+                <!-- Основной контент -->
+                <div class="notes-main">
+                    <div class="page-header">
+                        <div>
+                            <h2>Заметки</h2>
+                        </div>
+                    </div>
+                    <div id="notes-list" class="notes-grid"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Страница: Архив -->
+        <section id="archive" class="page">
+            <div class="page-header">
+                <div>
+                    <h2>Архив</h2>
+                    <p class="subtitle">Выполненные задачи</p>
+                </div>
+            </div>
+            <div class="archive-filters">
+                <button class="archive-filter-btn active" data-filter="all">Все</button>
+                <button class="archive-filter-btn" data-filter="day">За день</button>
+                <button class="archive-filter-btn" data-filter="week">За неделю</button>
+                <button class="archive-filter-btn" data-filter="month">За месяц</button>
+                <button class="archive-filter-btn" data-filter="year">За год</button>
+            </div>
+            <div id="archive-list"></div>
+        </section>
+
+        <!-- Страница: Аналитика -->
+        <section id="analytics" class="page">
+            <div class="page-header">
+                <div>
+                    <h2>Аналитика</h2>
+                    <p class="subtitle">Статистика продуктивности</p>
+                </div>
+            </div>
+            <div class="analytics-content">
+                <div class="analytics-grid">
+                    <div class="analytics-card">
+                        <h3><i class="fas fa-tasks"></i> Задачи</h3>
+                        <div class="analytics-stats">
+                            <div class="analytics-stat">
+                                <span class="analytics-number" id="analytics-total-tasks">0</span>
+                                <span class="analytics-label">Всего задач</span>
+                            </div>
+                            <div class="analytics-stat">
+                                <span class="analytics-number" id="analytics-completed-tasks">0</span>
+                                <span class="analytics-label">Выполнено</span>
+                            </div>
+                            <div class="analytics-stat">
+                                <span class="analytics-number" id="analytics-completion-rate">0%</span>
+                                <span class="analytics-label">Процент выполнения</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="analytics-card">
+                        <h3><i class="fas fa-calendar-check"></i> Активность</h3>
+                        <div class="analytics-stats">
+                            <div class="analytics-stat">
+                                <span class="analytics-number" id="analytics-today-completed">0</span>
+                                <span class="analytics-label">Выполнено сегодня</span>
+                            </div>
+                            <div class="analytics-stat">
+                                <span class="analytics-number" id="analytics-week-completed">0</span>
+                                <span class="analytics-label">За неделю</span>
+                            </div>
+                            <div class="analytics-stat">
+                                <span class="analytics-number" id="analytics-month-completed">0</span>
+                                <span class="analytics-label">За месяц</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="analytics-card">
+                        <h3><i class="fas fa-bullseye"></i> Цели</h3>
+                        <div class="analytics-stats">
+                            <div class="analytics-stat">
+                                <span class="analytics-number" id="analytics-total-goals">0</span>
+                                <span class="analytics-label">Всего целей</span>
+                            </div>
+                            <div class="analytics-stat">
+                                <span class="analytics-number" id="analytics-short-goals">0</span>
+                                <span class="analytics-label">Краткосрочные</span>
+                            </div>
+                            <div class="analytics-stat">
+                                <span class="analytics-number" id="analytics-long-goals">0</span>
+                                <span class="analytics-label">Долгосрочные</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="analytics-card">
+                        <h3><i class="fas fa-folder"></i> Проекты</h3>
+                        <div class="analytics-stats">
+                            <div class="analytics-stat">
+                                <span class="analytics-number" id="analytics-total-projects">0</span>
+                                <span class="analytics-label">Всего проектов</span>
+                            </div>
+                            <div class="analytics-stat">
+                                <span class="analytics-number" id="analytics-project-tasks">0</span>
+                                <span class="analytics-label">Задач в проектах</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="analytics-chart-section">
+                    <h3>Активность за последние 7 дней</h3>
+                    <div class="activity-chart" id="activity-chart"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Страница: Настройки -->
+        <section id="settings" class="page">
+            <div class="page-header">
+                <div>
+                    <h2>Настройки</h2>
+                    <p class="subtitle">Настройки приложения</p>
+                </div>
+            </div>
+            <div class="settings-content">
+                <div class="setting-item">
+                    <h3><i class="fas fa-palette"></i> Внешний вид</h3>
+                    <div class="setting-control">
+                        <label>Темная тема</label>
+                        <button class="btn btn-secondary" id="theme-toggle">
+                            <i class="fas fa-moon"></i> Переключить тему
+                        </button>
+                    </div>
+                </div>
+                <div class="setting-item">
+                    <h3><i class="fas fa-database"></i> Управление данными</h3>
+                    <div class="setting-buttons">
+                        <button class="btn btn-secondary" id="export-data-btn">
+                            <i class="fas fa-download"></i> Экспорт данных
+                        </button>
+                        <button class="btn btn-secondary" id="import-data-btn">
+                            <i class="fas fa-upload"></i> Импорт данных
+                        </button>
+                        <button class="btn btn-danger" id="clear-data-btn">
+                            <i class="fas fa-trash"></i> Очистить все данные
+                        </button>
+                    </div>
+                </div>
+                <div class="setting-item">
+                    <h3><i class="fas fa-info-circle"></i> О приложении</h3>
+                    <p>Версия 2.0.0</p>
+                    <p>Приложение для личной продуктивности</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Модальное окно авторизации -->
+    <div id="auth-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Вход в систему</h2>
+            <form id="auth-form">
+                <input type="text" id="auth-name-input" placeholder="Ваше имя" required>
+                <input type="email" id="auth-email-input" placeholder="Email" required>
+                <div class="modal-buttons">
+                    <button type="submit" class="btn btn-primary">Войти</button>
+                    <button type="button" class="btn btn-secondary" onclick="Auth.closeAuthModal()">Отмена</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Модальное окно для задачи -->
+    <div id="task-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2 id="modal-task-title">Добавить задачу</h2>
+            <form id="task-form">
+                <input type="text" id="task-title-input" placeholder="Название задачи" required>
+                <textarea id="task-description-input" placeholder="Описание (необязательно)"></textarea>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Дата</label>
+                        <input type="date" id="task-date-input">
+                    </div>
+                    <div class="form-group">
+                        <label>Время</label>
+                        <input type="time" id="task-time-input">
+                    </div>
+                </div>
+                <label>Список</label>
+                <select id="task-list-input">
+                    <option value="">Все задачи</option>
+                </select>
+                <label>Статус</label>
+                <select id="task-status-input">
+                    <option value="pending">В процессе</option>
+                    <option value="half">На половине</option>
+                    <option value="completed">Выполнено</option>
+                </select>
+                <div class="modal-buttons">
+                    <button type="submit" class="btn btn-primary">Сохранить</button>
+                    <button type="button" class="btn btn-secondary" id="cancel-task-btn">Отмена</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Модальное окно для создания списка задач -->
+    <div id="task-list-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Создать список</h2>
+            <form id="task-list-form">
+                <input type="text" id="task-list-name-input" placeholder="Название списка" required>
+                <input type="color" id="task-list-color-input" value="#6366f1">
+                <div class="modal-buttons">
+                    <button type="submit" class="btn btn-primary">Создать</button>
+                    <button type="button" class="btn btn-secondary" id="cancel-task-list-btn">Отмена</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Модальное окно для папки целей -->
+    <div id="goal-folder-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Создать папку</h2>
+            <form id="goal-folder-form">
+                <input type="text" id="goal-folder-name-input" placeholder="Название папки" required>
+                <label>Категория</label>
+                <select id="goal-folder-category-input">
+                    <option value="short">Краткосрочные</option>
+                    <option value="medium" selected>Среднесрочные</option>
+                    <option value="long">Долгосрочные</option>
+                </select>
+                <div class="modal-buttons">
+                    <button type="submit" class="btn btn-primary">Создать</button>
+                    <button type="button" class="btn btn-secondary" id="cancel-goal-folder-btn">Отмена</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Модальное окно для проекта -->
+    <div id="project-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2 id="modal-project-title">Добавить проект</h2>
+            <form id="project-form">
+                <input type="text" id="project-name-input" placeholder="Название проекта" required>
+                <textarea id="project-description-input" placeholder="Описание проекта"></textarea>
+                <label>Цвет проекта</label>
+                <input type="color" id="project-color-input" value="#4a90e2">
+                <div class="modal-buttons">
+                    <button type="submit" class="btn btn-primary">Сохранить</button>
+                    <button type="button" class="btn btn-secondary" id="cancel-project-btn">Отмена</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Модальное окно для цели -->
+    <div id="goal-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2 id="modal-goal-title">Добавить цель</h2>
+            <form id="goal-form">
+                <input type="text" id="goal-title-input" placeholder="Название цели" required>
+                <textarea id="goal-description-input" placeholder="Описание цели"></textarea>
+                <input type="date" id="goal-deadline-input" placeholder="Срок выполнения">
+                <label>Категория</label>
+                <select id="goal-category-input">
+                    <option value="short">Краткосрочные</option>
+                    <option value="medium" selected>Среднесрочные</option>
+                    <option value="long">Долгосрочные</option>
+                </select>
+                <label>Папка</label>
+                <select id="goal-folder-input">
+                    <option value="">Без папки</option>
+                </select>
+                <div class="modal-buttons">
+                    <button type="submit" class="btn btn-primary">Сохранить</button>
+                    <button type="button" class="btn btn-secondary" id="cancel-goal-btn">Отмена</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Модальное окно для заметки -->
+    <div id="note-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2 id="modal-note-title">Добавить заметку</h2>
+            <form id="note-form">
+                <input type="text" id="note-title-input" placeholder="Заголовок заметки" required>
+                <textarea id="note-content-input" placeholder="Содержание заметки" rows="10"></textarea>
+                <div class="modal-buttons">
+                    <button type="submit" class="btn btn-primary">Сохранить</button>
+                    <button type="button" class="btn btn-secondary" id="cancel-note-btn">Отмена</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Подключение модулей -->
+    <script src="src/js/utils/dataManager.js"></script>
+    <script src="src/js/utils/helpers.js"></script>
+    <script src="src/js/utils/theme.js"></script>
+    <script src="src/js/modules/auth.js"></script>
+    <script src="src/js/modules/navigation.js"></script>
+    <script src="src/js/modules/tasks.js"></script>
+    <script src="src/js/modules/goals.js"></script>
+    <script src="src/js/modules/notes.js"></script>
+    <script src="src/js/modules/calendar.js"></script>
+    <script src="src/js/modules/dashboard.js"></script>
+    <script src="src/js/modules/projects.js"></script>
+    <script src="src/js/modules/archive.js"></script>
+    <script src="src/js/modules/analytics.js"></script>
+    <script src="src/js/modules/settings.js"></script>
+    <script src="src/js/app.js"></script>
+</body>
+</html>
